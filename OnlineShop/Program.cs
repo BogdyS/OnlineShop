@@ -1,4 +1,8 @@
+using OnlineShop;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddDataConnection();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
