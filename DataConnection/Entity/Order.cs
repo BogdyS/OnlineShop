@@ -4,6 +4,10 @@ namespace DataConnection.Entity;
 
 public class Order
 {
+    public Order()
+    {
+        ProductOrders = new List<ProductOrder>();
+    }
     public int Id { get; set; }
     public int UserId { get; set; }
     public string Address { get; set; }
