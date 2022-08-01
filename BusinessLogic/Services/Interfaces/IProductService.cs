@@ -10,6 +10,6 @@ public interface IProductService
     Task<ProductDTO> GetByIdAsync(int id);
     Task<IEnumerable<ProductDTO>> FindByNameAsync(string name);
     Task<IEnumerable<ProductDTO>> GetCustomAsync(Expression<Func<Product, bool>>? filter,
-        IOrderedQueryable<Product>? orderBy = null);
-    Task<IEnumerable<ProductDTO>> GetCustomAsync(IOrderedQueryable<Product>? orderBy);
+        Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null);
+    Task<IEnumerable<ProductDTO>> GetCustomAsync(Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy);
 }

@@ -2,6 +2,7 @@
 using BusinessLogic.Repositories.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Common.DTO;
+using Common.Exceptions;
 using DataConnection.Entity;
 
 namespace BusinessLogic.Services.Implementations;
@@ -16,26 +17,52 @@ public class ProductService : IProductService
     }
     public async Task<IEnumerable<ProductDTO>> GetAllAsync()
     {
-        return await _productRepository.GetAllAsync();
+        var products = await _productRepository.GetAllAsync();
+        if (products == null)
+        {
+            throw new NotFoundException("No products exists");
+        }
+
+        return products;
     }
 
     public async Task<ProductDTO> GetByIdAsync(int id)
     {
-        return await _productRepository.GetAsync(id);
+        var product = await _productRepository.GetAsync(id);
+        if (product == null)
+        {
+            throw new NotFoundException("Product not found");
+        }
+
+        return product;
     }
 
-    public async Task<IEnumerable<ProductDTO>> FindByNameAsync(string name)
+    public async Task<IEnumerable<ProductDTO>> FindByNameAsync(string name) //TODO: ElasticSearch 
     {
-        return await _productRepository.GetAllAsync(product => product.Name.ToLower().Contains(name.ToLower()));
+        var products = await _productRepository.GetAllAsync(product => product.Name.ToLower().Contains(name.ToLower()));
+        if (products == null)
+        {
+            throw new NotFoundException($"Products with name \"{name}\" not exists");
+        }
+        return products;
     }
 
-    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(Expression<Func<Product, bool>>? filter, IOrderedQueryable<Product>? orderBy = null)
+    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(Expression<Func<Product, bool>>? filter,
+                                    Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null)
     {
-        return await _productRepository.GetAllAsync(filter, orderBy);
+        if (filter == null && orderBy == null)
+        {
+            return await _productRepository.GetAllAsync() ?? new List<ProductDTO>();
+        }
+        if (orderBy == null)
+        {
+            return await _productRepository.GetAllAsync(filter) ?? new List<ProductDTO>();
+        }
+        return await _productRepository.GetAllAsync(filter, orderBy) ?? new List<ProductDTO>();
     }
 
-    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(IOrderedQueryable<Product>? orderBy)
+    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy)
     {
-        return await _productRepository.GetAllAsync(orderBy);
+        return await _productRepository.GetAllAsync(orderBy) ?? new List<ProductDTO>();
     }
 }
