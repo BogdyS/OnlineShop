@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using Common.DTO;
+using Common.DTO.Product;
 using DataConnection.Entity;
 
 namespace BusinessLogic.Repositories.Interfaces;

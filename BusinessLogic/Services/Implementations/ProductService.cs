@@ -2,6 +2,7 @@
 using BusinessLogic.Repositories.Interfaces;
 using BusinessLogic.Services.Interfaces;
 using Common.DTO;
+using Common.DTO.Product;
 using Common.Exceptions;
 using DataConnection.Entity;
 
@@ -47,13 +48,9 @@ public class ProductService : IProductService
         return products;
     }
 
-    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(Expression<Func<Product, bool>>? filter,
+    public async Task<IEnumerable<ProductDTO>> GetCustomAsync(Expression<Func<Product, bool>> filter,
                                     Func<IQueryable<Product>, IOrderedQueryable<Product>>? orderBy = null)
     {
-        if (filter == null && orderBy == null)
-        {
-            return await _productRepository.GetAllAsync() ?? new List<ProductDTO>();
-        }
         if (orderBy == null)
         {
             return await _productRepository.GetAllAsync(filter) ?? new List<ProductDTO>();

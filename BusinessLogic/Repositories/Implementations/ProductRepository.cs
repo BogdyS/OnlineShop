@@ -3,6 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BusinessLogic.Repositories.Interfaces;
 using Common.DTO;
+using Common.DTO.Product;
 using DataConnection;
 using DataConnection.Entity;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ public class ProductRepository : IProductRepository
 
         if (orderBy != null)
         {
-            query = orderBy(_dataContext.Products);
+            query = orderBy(query);
         }
 
         return await query
@@ -52,7 +53,7 @@ public class ProductRepository : IProductRepository
 
         if (orderBy != null)
         {
-            query = orderBy(_dataContext.Products);
+            query = orderBy(query);
         }
 
         return await query

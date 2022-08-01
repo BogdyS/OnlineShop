@@ -2,7 +2,7 @@
 using DataConnection.Entity;
 using Type = DataConnection.Entity.Type;
 
-namespace Common.DTO;
+namespace Common.DTO.Product;
 
 public class ProductDTO
 {
