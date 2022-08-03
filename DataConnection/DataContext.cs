@@ -1,7 +1,6 @@
 ﻿using DataConnection.Configurations;
 using DataConnection.Entity;
 using Microsoft.EntityFrameworkCore;
-using EFCore.CheckConstraints;
 using Type = DataConnection.Entity.Type;
 
 namespace DataConnection;

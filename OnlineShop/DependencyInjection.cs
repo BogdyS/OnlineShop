@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using BusinessLogic.Mapping;
+﻿using BusinessLogic.Mapping;
 using BusinessLogic.Repositories.Implementations;
 using BusinessLogic.Repositories.Interfaces;
 using BusinessLogic.Services.Implementations;

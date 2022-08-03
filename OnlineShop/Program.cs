@@ -3,6 +3,7 @@ using OnlineShop;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddDataConnection();
+builder.RegisterServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

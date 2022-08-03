@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Nodes;
-
-namespace DataConnection.Entity;
+﻿namespace DataConnection.Entity;
 
 public class Product
 {

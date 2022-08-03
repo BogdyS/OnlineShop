@@ -2,7 +2,6 @@
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BusinessLogic.Repositories.Interfaces;
-using Common.DTO;
 using Common.DTO.Product;
 using DataConnection;
 using DataConnection.Entity;
