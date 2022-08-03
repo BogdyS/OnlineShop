@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataConnection.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Type = DataConnection.Entity.Type;
 
 namespace DataConnection.Configurations;
 
-public class TypeConfiguration : IEntityTypeConfiguration<Type>
+public class ProductTypeConfiguration : IEntityTypeConfiguration<ProductType>
 {
-    public void Configure(EntityTypeBuilder<Type> builder)
+    public void Configure(EntityTypeBuilder<ProductType> builder)
     {
         builder.Property(t => t.Id)
             .IsRequired()

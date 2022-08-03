@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="DTO\Manufacturer\" />
+    <Folder Include="DTO\User\" />
+    <Folder Include="DTO\Type\" />
     <Folder Include="DTO\Order\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
