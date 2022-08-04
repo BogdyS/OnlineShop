@@ -12,10 +12,8 @@ public class UserProfile : Profile
             .ForMember(dto => dto.Id,
                 memberOptions => memberOptions.MapFrom(u => u.Id))
             .ForMember(dto => dto.Name,
-                memberOptions => memberOptions.MapFrom(u => u.Name))
+                memberOptions => memberOptions.MapFrom(u => u.UserName))
             .ForMember(dto => dto.Email,
-                memberOptions => memberOptions.MapFrom(u => u.Email))
-            .ForMember(dto => dto.Role,
-                memberOptions => memberOptions.MapFrom(u => u.Role));
+                memberOptions => memberOptions.MapFrom(u => u.Email));
     }
 }

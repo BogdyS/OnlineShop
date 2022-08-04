@@ -30,8 +30,6 @@ public static class DependencyInjection
         builder.Services.AddScoped<IManufacturerService, ManufacturerService>();
         builder.Services.AddScoped<ITypeRepository, TypeRepository>();
         builder.Services.AddScoped<ITypeService, TypeService>();
-        builder.Services.AddScoped<IUserRepository, UserRepository>();
-        builder.Services.AddScoped<IUserService, UserService>();
         builder.Services.AddAutoMapper(typeof(ProductProfile).Assembly);
         return builder;
     }

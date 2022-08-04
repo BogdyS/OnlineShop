@@ -1,17 +1,13 @@
 ﻿using DataConnection.Entity.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace DataConnection.Entity;
 
-public class User
+public class User : IdentityUser
 {
-    public User()
+    public User() : base()
     {
         Orders = new List<Order>();
     }
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string PasswordHash { get; set; }
-    public Roles Role { get; set; }
     public ICollection<Order> Orders { get; set; }
 }
