@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DTO\Manufacturer\" />
+    <Folder Include="DTO\User\" />
+    <Folder Include="DTO\Type\" />
+    <Folder Include="DTO\Order\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DataConnection\DataConnection.csproj" />
+  </ItemGroup>
+
+</Project>

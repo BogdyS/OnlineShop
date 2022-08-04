@@ -2,9 +2,10 @@
 
 public enum Statuses
 {
-    Processing = 0,
-    ReadyToSend = 1,
-    InProgress = 2,
-    Delivered = 3,
-    Done = 4
+    NotReady = 0,
+    Processing = 1,
+    ReadyToSend = 2,
+    InProgress = 3,
+    Delivered = 4,
+    Done = 5
 }
