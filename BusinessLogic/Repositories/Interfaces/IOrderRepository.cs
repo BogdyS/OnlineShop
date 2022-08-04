@@ -4,7 +4,7 @@ using DataConnection.Entity;
 
 namespace BusinessLogic.Repositories.Interfaces;
 
-public interface IOrderRepository
+public interface IOrderRepository : IDisposable
 {
     Task<OrderDTO?> GetAsync(int id);
     Task<IEnumerable<OrderDTO>?> GetAllAsync(

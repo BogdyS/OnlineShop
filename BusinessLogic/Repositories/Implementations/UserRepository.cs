@@ -22,6 +22,12 @@ public class UserRepository : IUserRepository
     {
         return await _dataContext.Users
             .ProjectTo<UserDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .SingleOrDefaultAsync(u => u.Id == id);
+    }
+
+    public async void Dispose()
+    {
+        await _dataContext.DisposeAsync();
     }
 }

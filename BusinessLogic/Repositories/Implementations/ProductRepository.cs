@@ -23,6 +23,7 @@ public class ProductRepository : IProductRepository
     {
         return await _dataContext.Products
             .ProjectTo<ProductDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .SingleOrDefaultAsync(p => p.Id == id);
     }
 
@@ -37,6 +38,7 @@ public class ProductRepository : IProductRepository
 
         return await query
             .ProjectTo<ProductDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
     }
 
@@ -57,6 +59,7 @@ public class ProductRepository : IProductRepository
 
         return await query
             .ProjectTo<ProductDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
     }
 

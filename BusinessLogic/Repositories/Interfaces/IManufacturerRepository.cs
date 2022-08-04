@@ -2,7 +2,7 @@
 
 namespace BusinessLogic.Repositories.Interfaces;
 
-public interface IManufacturerRepository
+public interface IManufacturerRepository : IDisposable
 {
     Task<IEnumerable<ManufacturerDTO>> GetAllAsync();
     Task<ManufacturerDTO?> GetAsync(int id);

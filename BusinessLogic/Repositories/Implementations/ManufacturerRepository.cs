@@ -22,6 +22,7 @@ public class ManufacturerRepository : IManufacturerRepository
     {
         return await _dataContext.Manufacturers
             .ProjectTo<ManufacturerDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
     }
 
@@ -29,6 +30,7 @@ public class ManufacturerRepository : IManufacturerRepository
     {
         return await _dataContext.Manufacturers
             .ProjectTo<ManufacturerDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .SingleOrDefaultAsync(m => m.Id == id);
     }
 
@@ -37,6 +39,12 @@ public class ManufacturerRepository : IManufacturerRepository
         return await _dataContext.Manufacturers
             .Where(m => m.Name.ToLower().Contains(name.ToLower()))
             .ProjectTo<ManufacturerDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
+    }
+
+    public async void Dispose()
+    {
+        await _dataContext.DisposeAsync();
     }
 }

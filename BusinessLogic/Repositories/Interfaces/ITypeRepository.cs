@@ -2,7 +2,7 @@
 
 namespace BusinessLogic.Repositories.Interfaces;
 
-public interface ITypeRepository
+public interface ITypeRepository : IDisposable
 {
     Task<IEnumerable<TypeDTO>> GetAllAsync();
     Task<TypeDTO?> GetAsync(int id);

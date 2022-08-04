@@ -22,6 +22,7 @@ public class OrderRepository : IOrderRepository
     {
         return await _dataContext.Orders
             .ProjectTo<OrderDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .SingleOrDefaultAsync(o => o.Id == id);
     }
 
@@ -42,6 +43,7 @@ public class OrderRepository : IOrderRepository
 
         return await query
             .ProjectTo<OrderDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
     }
 
@@ -56,6 +58,12 @@ public class OrderRepository : IOrderRepository
 
         return await query
             .ProjectTo<OrderDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
+    }
+
+    public async void Dispose()
+    {
+        await _dataContext.DisposeAsync();
     }
 }

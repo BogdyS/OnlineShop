@@ -22,6 +22,7 @@ public class TypeRepository : ITypeRepository
     {
         return await _dataContext.Types
             .ProjectTo<TypeDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .ToListAsync();
     }
 
@@ -29,6 +30,12 @@ public class TypeRepository : ITypeRepository
     {
         return await _dataContext.Types
             .ProjectTo<TypeDTO>(_mapper.ConfigurationProvider)
+            .AsNoTracking()
             .SingleOrDefaultAsync(t => t.Id == id);
+    }
+
+    public async void Dispose()
+    {
+        await _dataContext.DisposeAsync();
     }
 }
